@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telecommunications Honeypot Project - Revised Timeline</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .timeline-container {
+            position: relative;
+            margin: 20px 0;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+            transform: translateX(-50%);
+        }
+
+        .phase {
+            position: relative;
+            margin: 40px 0;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .phase:nth-child(1) { animation-delay: 0.1s; }
+        .phase:nth-child(2) { animation-delay: 0.2s; }
+        .phase:nth-child(3) { animation-delay: 0.3s; }
+        .phase:nth-child(4) { animation-delay: 0.4s; }
+        .phase:nth-child(5) { animation-delay: 0.5s; }
+
+        .phase-content {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 0 60px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .phase-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .phase.left .phase-content {
+            margin-left: 60px;
+            margin-right: calc(50% + 30px);
+        }
+
+        .phase.right .phase-content {
+            margin-right: 60px;
+            margin-left: calc(50% + 30px);
+        }
+
+        .phase-marker {
+            position: absolute;
+            left: 50%;
+            top: 30px;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 4px solid;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+
+        .phase.current .phase-marker {
+            border-color: #ff6b6b;
+            background: #ff6b6b;
+            animation: pulse 2s infinite;
+        }
+
+        .phase.completed .phase-marker {
+            border-color: #4ecdc4;
+            background: #4ecdc4;
+        }
+
+        .phase.upcoming .phase-marker {
+            border-color: #bdc3c7;
+            background: white;
+        }
+
+        .phase-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .phase-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .phase-dates {
+            background: #ecf0f1;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            font-weight: 500;
+        }
+
+        .phase-description {
+            color: #34495e;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .task-list {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .task-item {
+            background: #f8f9fa;
+            margin: 8px 0;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            transition: all 0.3s ease;
+        }
+
+        .task-item:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+
+        .priority-high {
+            border-left-color: #e74c3c;
+        }
+
+        .priority-medium {
+            border-left-color: #f39c12;
+        }
+
+        .priority-low {
+            border-left-color: #27ae60;
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .status-not-started { background-color: #bdc3c7; }
+        .status-in-progress { background-color: #f39c12; }
+        .status-completed { background-color: #27ae60; }
+
+        .progress-bar {
+            background: #ecf0f1;
+            height: 6px;
+            border-radius: 3px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4ecdc4, #44a08d);
+            border-radius: 3px;
+            transition: width 1s ease;
+        }
+
+        .legend {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .legend h3 {
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .legend-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.2); }
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 30px;
+            }
+
+            .phase.left .phase-content,
+            .phase.right .phase-content {
+                margin-left: 70px;
+                margin-right: 20px;
+            }
+
+            .phase-marker {
+                left: 30px;
+            }
+
+            .phase-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Telecommunications Honeypot Project</h1>
+            <p>Revised Timeline - September 28, 2025 to December 8, 2025</p>
+        </div>
+
+        <div class="timeline-container">
+            <div class="timeline">
+                
+                <div class="phase current left">
+                    <div class="phase-marker"></div>
+                    <div class="phase-content">
+                        <div class="phase-header">
+                            <div class="phase-title">Phase 1: AWS Infrastructure Setup</div>
+                            <div class="phase-dates">Sept 28 - Oct 6</div>
+                        </div>
+                        <div class="phase-description">
+                            Critical phase to resolve AWS access issues and deploy core infrastructure. This is the foundation for everything else.
+                        </div>
+                        <ul class="task-list">
+                            <li class="task-item priority-high">
+                                <span class="status-indicator status-in-progress"></span>
+                                Resolve AWS connectivity and access issues
+                            </li>
+                            <li class="task-item priority-high">
+                                <span class="status-indicator status-not-started"></span>
+                                Deploy VPC, subnets, and security groups
+                            </li>
+                            <li class="task-item priority-high">
+                                <span class="status-indicator status-not-started"></span>
+                                Launch all EC2 instances (web, db, soc, jump)
+                            </li>
+                            <li class="task-item priority-medium">
+                                <span class="status-indicator status-not-started"></span>
+                                Configure basic networking and SSH access
+                            </li>
+                        </ul>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 25%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="phase upcoming right">
+                    <div class="phase-marker"></div>
+                    <div class="phase-content">
+                        <div class="phase-header">
+                            <div class="phase-title">Phase 2: Core Services Deployment</div>
+                            <div class="phase-dates">Oct 7 - Oct 20</div>
+                        </div>
+                        <div class="phase-description">
+                            Deploy and configure essential services. Focus on getting the basic honeypot functional before adding complexity.
+                        </div>
+                        <ul class="task-list">
+                            <li class="task-item priority-high">
+                                <span class="status-indicator status-not-started"></span>
+                                Deploy JIM telecommunications website on web-jim
+                            </li>
+                            <li class="task-item priority-high">
+                                <span class="status-indicator status-not-started"></span>
+                                Configure MySQL database with realistic telecom data
+                            </li>
+                            <li class="task-item priority-high">
+                                <span class="status-indicator status-not-started"></span>
+                                Set up monitoring on soc-jim
+                            </li>
+                            <li class="task-item priority-medium">
+                                <span class="status-indicator status-not-started"></span>
+                                Configure SSH/Telnet honeypot on jump-jim
+                            </li>
+                            <li class="task-item priority-medium">
+                                <span class="status-indicator status-not-started"></span>
+                                Implement basic customer portal functionality
+                            </li>
+                        </ul>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="phase upcoming left">
+                    <div class="phase-marker"></div>
+                    <div class="phase-content">
+                        <div class="phase-header">
+                            <div class="phase-title">Phase 3: Security & Monitoring</div>
+                            <div class="phase-dates">Oct 21 - Nov 3</div>
+                        </div>
+                        <div class="phase-description">
+                            Configure comprehensive logging, monitoring, and intentional vulnerabilities. This phase ensures you can detect and analyze attacks.
+                        </div>
+                        <ul class="task-list">
+                            <li class="task-item priority-high">
+                                <span class="status-indicator status-not-started"></span>
+                                Deploy agents across all VMs
+                            </li>
+                            <li class="task-item priority-high">
+                                <span class="status-indicator status-not-started"></span>
+                                Configure comprehensive logging and alerting
+                            </li>
+                            <li class="task-item priority-medium">
+                                <span class="status-indicator status-not-started"></span>
+                                Implement intentional vulnerabilities for honeypot
+                            </li>
+                            <li class="task-item priority-medium">
+                                <span class="status-indicator status-not-started"></span>
+                                Set up automated data export procedures
+                            </li>
+                            <li class="task-item priority-low">
+                                <span class="status-indicator status-not-started"></span>
+                                Add advanced telecom services (VoIP if time permits)
+                            </li>
+                        </ul>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="phase upcoming right">
+                    <div class="phase-marker"></div>
+                    <div class="phase-content">
+                        <div class="phase-header">
+                            <div class="phase-title">Phase 4: Data Collection</div>
+                            <div class="phase-dates">Nov 4 - Nov 25</div>
+                        </div>
+                        <div class="phase-description">
+                            Open honeypot to external access and collect attack data. This is the core research phase that will drive your capstone presentation.
+                        </div>
+                        <ul class="task-list">
+                            <li class="task-item priority-high">
+                                <span class="status-indicator status-not-started"></span>
+                                Open security groups for external access
+                            </li>
+                            <li class="task-item priority-high">
+                                <span class="status-indicator status-not-started"></span>
+                                Promote honeypot to attract attackers
+                            </li>
+                            <li class="task-item priority-high">
+                                <span class="status-indicator status-not-started"></span>
+                                Monitor and collect attack data continuously
+                            </li>
+                            <li class="task-item priority-medium">
+                                <span class="status-indicator status-not-started"></span>
+                                Perform weekly data exports and analysis
+                            </li>
+                            <li class="task-item priority-low">
+                                <span class="status-indicator status-not-started"></span>
+                                Conduct controlled attack testing if needed
+                            </li>
+                        </ul>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="phase upcoming left">
+                    <div class="phase-marker"></div>
+                    <div class="phase-content">
+                        <div class="phase-header">
+                            <div class="phase-title">Phase 5: Analysis & Presentation</div>
+                            <div class="phase-dates">Nov 26 - Dec 8</div>
+                        </div>
+                        <div class="phase-description">
+                            Analyze collected data, document findings, and prepare capstone presentation. Focus on threat intelligence and attack pattern analysis.
+                        </div>
+                        <ul class="task-list">
+                            <li class="task-item priority-high">
+                                <span class="status-indicator status-not-started"></span>
+                                Analyze attack patterns and threat intelligence
+                            </li>
+                            <li class="task-item priority-high">
+                                <span class="status-indicator status-not-started"></span>
+                                Document findings and create final report
+                            </li>
+                            <li class="task-item priority-high">
+                                <span class="status-indicator status-not-started"></span>
+                                Prepare capstone presentation materials
+                            </li>
+                            <li class="task-item priority-medium">
+                                <span class="status-indicator status-not-started"></span>
+                                Create recommendations for real-world implementation
+                            </li>
+                        </ul>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="legend">
+            <h3>Timeline Legend</h3>
+            <div class="legend-items">
+                <div class="legend-item">
+                    <div class="status-indicator status-not-started"></div>
+                    <span>Not Started</span>
+                </div>
+                <div class="legend-item">
+                    <div class="status-indicator status-in-progress"></div>
+                    <span>In Progress</span>
+                </div>
+                <div class="legend-item">
+                    <div class="status-indicator status-completed"></div>
+                    <span>Completed</span>
+                </div>
+                
+                <div class="legend-item">
+                    <div class="task-item priority-high" style="border-left-color: #e74c3c; padding: 5px 10px; margin: 0; font-size: 0.9rem;">High Priority</div>
+                </div>
+                <div class="legend-item">
+                    <div class="task-item priority-medium" style="border-left-color: #f39c12; padding: 5px 10px; margin: 0; font-size: 0.9rem;">Medium Priority</div>
+                </div>
+                <div class="legend-item">
+                    <div class="task-item priority-low" style="border-left-color: #27ae60; padding: 5px 10px; margin: 0; font-size: 0.9rem;">Low Priority</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add interactive features
+        document.addEventListener('DOMContentLoaded', function() {
+            const phases = document.querySelectorAll('.phase');
+            
+            phases.forEach(phase => {
+                phase.addEventListener('click', function() {
+                    // Toggle expanded view
+                    const content = this.querySelector('.phase-content');
+                    content.style.transform = content.style.transform === 'scale(1.02)' ? 'scale(1)' : 'scale(1.02)';
+                });
+            });
+
+            // Update progress bars based on task completion
+            function updateProgress() {
+                phases.forEach(phase => {
+                    const tasks = phase.querySelectorAll('.task-item');
+                    const completedTasks = phase.querySelectorAll('.status-completed');
+                    const progressBar = phase.querySelector('.progress-fill');
+                    
+                    if (progressBar && tasks.length > 0) {
+                        const progress = (completedTasks.length / tasks.length) * 100;
+                        progressBar.style.width = progress + '%';
+                    }
+                });
+            }
+
+            // Simulate some progress for demonstration
+            setTimeout(() => {
+                updateProgress();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
