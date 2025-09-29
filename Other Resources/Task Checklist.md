@@ -3,22 +3,22 @@
 ## AWS Access Resolution
 
 ### AWS Infrastructure Access
-- [ ] Validate AWS connectivity issues
-- [ ] Verify IAM user permissions and policies
-- [ ] Check security groups for SSH/RDP access rules
-- [ ] Verify VPC and subnet configurations
-- [ ] Test connection from different networks (campus vs external)
-- [ ] Contact AWS support if needed
+- [X] Validate AWS connectivity issues
+- [X] Verify IAM user permissions and policies
+- [X] Check security groups for SSH/RDP access rules
+- [X] Verify VPC and subnet configurations
+- [X] Test connection from different networks (campus vs external)
+- [X] Contact AWS support if needed
 
 ### Validate Shared Account Issues
-- [ ] Contact Adam
+- [X] Contact Adam
 - [ ] Confirm account limits
 
 ## PROJECT MANAGEMENT & DOCUMENTATION
 
 ### Project Setup
-- [ ] Finalize budget selection (Low: $29.64, Mid: $168.90, Mid-High: $224.38, High: $349.48)
-- [ ] Update project timeline based on current date (Sept 28, 2025)
+- [X] Finalize budget selection (Low: $29.64, Mid: $168.90, Mid-High: $224.38, High: $349.48)
+- [X] Update project timeline based on current date (Sept 28, 2025)
 - [ ] Establish backup/recovery procedures for project data
 - [ ] Set up regular progress tracking (weekly exports mentioned in timeline)
 
