@@ -19,7 +19,8 @@ sudo apt-get install kibana -y
 sudo nano /etc/kibana/kibana.yml
 server.port: 5601
 server.host: "0.0.0.0"
-elasticsearch.hosts: ["http://192.168.3.2:9200"]
+elasticsearch.hosts: ["https://192.168.3.2:9200"]
 sudo systemctl enable kibana
 sudo systemctl start kibana
 sudo systemctl status kibana
+sudo journalctl -u kibana --since "10 minutes ago" --no-pager | grep -i "verification code"
