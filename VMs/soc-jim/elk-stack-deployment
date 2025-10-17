@@ -23,4 +23,5 @@ elasticsearch.hosts: ["https://192.168.3.2:9200"]
 sudo systemctl enable kibana
 sudo systemctl start kibana
 sudo systemctl status kibana
+sudo /usr/share/elasticsearch/bin/elasticsearch-create-enrollment-token -s kibana
 sudo journalctl -u kibana --since "10 minutes ago" --no-pager | grep -i "verification code"
