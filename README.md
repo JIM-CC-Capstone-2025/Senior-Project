@@ -16,7 +16,7 @@ JIM Telecommunications is a realistic telecommunications honeypot environment on
 
 | VM Name | RAM | Storage | Network | IP Address | External Access | Primary Services | Role in Honeypot |
 |---------|-----|---------|---------|------------|-----------------|------------------|------------------|
-| **web-jim** | 8 GB | 32 GB | Public Subnet | 192.168.1.100 | Yes (Elastic IP) | NGINX, PHP, Customer Portal | Primary attack vector and public entry point |
-| **db-jim** | 4 GB | 32 GB | Private Subnet | 192.168.2.10 | No | MySQL, Customer Data | Lateral movement target and data repository |
+| **web-jim** | 8 GB | 32 GB | Public Subnet | 192.168.2.100 | Yes (Elastic IP) | NGINX, PHP, Customer Portal | Primary attack vector and public entry point |
+| **db-jim** | 4 GB | 32 GB | Private Subnet | 192.168.1.10 | No | MySQL, Customer Data | Lateral movement target and data repository |
 | **soc-jim** | 16 GB | 100 GB | SOC Subnet | 192.168.3.2 | No | ELK Stack, Monitoring | Centralized logging and threat analysis |
-| **jump-jim** | 8 GB | 32 GB | Private Subnet | 192.168.2.30 | No | SSH, Telnet, Management Tools | Internal honeypot for privilege escalation |
+| **jump-jim** | 8 GB | 32 GB | Private Subnet | 192.168.1.30 | No | SSH, Telnet, Management Tools | Internal honeypot for privilege escalation |
