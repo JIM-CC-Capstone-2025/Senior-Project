@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About Us - JIM Telecommunications</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Open Sans', sans-serif; color: #333; line-height: 1.6; }
+    header { background: rgb(46,60,106); }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem; max-width: 1200px; margin: 0 auto; }
+    .nav-left img { width: 20vh; }
+    .nav-right ul { list-style: none; display: flex; gap: 1.5rem; color: white; }
+    .nav-right li { font-size: 1rem; font-weight: 600; cursor: pointer; }
+    .hero-small { background: #172d5c; color: white; padding: 4rem 1rem; text-align: center; }
+    .hero-small h1 { font-size: 3rem; margin-bottom: 1rem; }
+    .container { max-width: 1200px; margin: 3rem auto; padding: 0 1rem; }
+    .about-section { margin-bottom: 3rem; }
+    .about-section h2 { color: #172d5c; font-size: 2rem; margin-bottom: 1rem; }
+    .about-section p { font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem; }
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin: 3rem 0; }
+    .stat-card { background: #e6f0ff; padding: 2rem; border-radius: 8px; text-align: center; }
+    .stat-card h3 { color: #172d5c; font-size: 3rem; margin-bottom: 0.5rem; }
+    .stat-card p { color: #555; font-size: 1.1rem; }
+    .team { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin: 3rem 0; }
+    .team-member { text-align: center; }
+    .team-member img { width: 200px; height: 200px; border-radius: 50%; background: #e6f0ff; margin: 0 auto 1rem; }
+    .team-member h3 { color: #172d5c; margin-bottom: 0.5rem; }
+    .team-member p { color: #666; }
+    footer { background: linear-gradient(16deg, rgba(47,60,108,1) 0%, rgba(234,99,42,1) 77%); color: white; text-align: center; padding: 2rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="nav-left">
+        <img src="images/logodark.svg" alt="JIM Telecom Logo">
+      </div>
+      <div class="nav-right">
+        <ul>
+          <li onclick="location.href='index.html'">Home</li>
+          <li onclick="location.href='services.html'">Services</li>
+          <li onclick="location.href='about.html'">About</li>
+          <li onclick="location.href='contact.html'">Contact</li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero-small">
+    <h1>About JIM Telecommunications</h1>
+    <p>Vermont's trusted partner in connectivity since 2010</p>
+  </section>
+
+  <div class="container">
+    <div class="about-section">
+      <h2>Our Story</h2>
+      <p>Founded in 2010, JIM Telecommunications was born from a simple mission: to bring reliable, high-speed internet to every corner of Vermont. What started as a small team serving Rutland County has grown into a comprehensive telecommunications provider serving businesses and residents throughout the state.</p>
+      <p>We understand that connectivity isn't just about speed—it's about reliability, support, and being there when our customers need us. That's why we've invested heavily in our fiber-optic network and maintain a 24/7 support team ready to assist with any issue.</p>
+    </div>
+
+    <div class="stats">
+      <div class="stat-card">
+        <h3>15,000+</h3>
+        <p>Active Customers</p>
+      </div>
+      <div class="stat-card">
+        <h3>99.9%</h3>
+        <p>Network Uptime</p>
+      </div>
+      <div class="stat-card">
+        <h3>500+</h3>
+        <p>Business Clients</p>
+      </div>
+      <div class="stat-card">
+        <h3>24/7</h3>
+        <p>Customer Support</p>
+      </div>
+    </div>
+
+    <div class="about-section">
+      <h2>Our Values</h2>
+      <p><strong>Customer First:</strong> Every decision we make starts with how it will benefit our customers. Your success is our success.</p>
+      <p><strong>Reliability:</strong> We build and maintain infrastructure that works when you need it. Our 99.9% uptime isn't just a number—it's a commitment.</p>
+      <p><strong>Innovation:</strong> Technology moves fast, and so do we. We continuously upgrade our network and services to give you the best experience possible.</p>
+      <p><strong>Community:</strong> As a Vermont company, we're invested in our community. We sponsor local events, support local schools, and employ local talent.</p>
+    </div>
+
+    <div class="about-section">
+      <h2>Our Team</h2>
+      <div class="team">
+        <div class="team-member">
+          <img src="images/team-ceo.jpg" alt="CEO">
+          <h3>John Anderson</h3>
+          <p>Chief Executive Officer</p>
+        </div>
+        <div class="team-member">
+          <img src="images/team-cto.jpg" alt="CTO">
+          <h3>Sarah Mitchell</h3>
+          <p>Chief Technology Officer</p>
+        </div>
+        <div class="team-member">
+          <img src="images/team-ops.jpg" alt="Operations">
+          <h3>Michael Chen</h3>
+          <p>VP of Operations</p>
+        </div>
+        <div class="team-member">
+          <img src="images/team-support.jpg" alt="Support">
+          <h3>Emily Rodriguez</h3>
+          <p>Customer Support Director</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-section">
+      <h2>Our Infrastructure</h2>
+      <p>JIM Telecommunications operates a state-of-the-art fiber-optic network spanning over 2,000 miles throughout Vermont. Our redundant network architecture ensures that even if one path fails, your connection stays active through an alternate route.</p>
+      <p>We maintain three data centers strategically located across the state, each with backup power systems, climate control, and 24/7 security monitoring. This infrastructure allows us to deliver the speed and reliability that modern businesses and homes require.</p>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 JIM Telecommunications. All Rights Reserved. | <a href="#">Privacy Policy</a></p>
+  </footer>
+</body>
+</html>
