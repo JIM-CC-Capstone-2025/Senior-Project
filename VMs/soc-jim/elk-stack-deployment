@@ -27,3 +27,10 @@ go to http://192.168.1.3:5601
 it will ask for enrollment token and verification code
 sudo journalctl -u kibana --since "10 minutes ago" --no-pager | grep -i "verification code"
 enter the code in the webpage
+openssl rand -hex 16
+openssl rand -hex 16
+openssl rand -hex 16
+sudo nano /etc/kibana/kibana.yml
+xpack.encryptedSavedObjects.encryptionKey: "PASTE_FIRST_KEY_HERE"
+xpack.reporting.encryptionKey: "PASTE_SECOND_KEY_HERE"
+xpack.security.encryptionKey: "PASTE_THIRD_KEY_HERE"
