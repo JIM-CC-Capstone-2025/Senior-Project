@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>JIM Telecommunications</title>
+  <!-- Google Fonts for better typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    header {
+      background: rgb(46,60,106);
+      border-bottom: 1px solid #ddd;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+    }
+    .nav-left h1, .nav-left img {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    .nav-right ul {
+      list-style: none;
+      display: flex;
+      align-content: center;
+      gap: 1.5rem;
+      color: white;
+    }
+    .nav-right li {
+      font-size: 1rem;
+      font-weight: 600;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    .nav-right li:hover {
+      transform: scale(1.1);
+    }
+    .hero {
+      background: #e6f0ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 5rem 1rem;
+      position: relative;
+    }
+    .hero .container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .hero-content {
+      flex: 1 1 500px;
+      min-width: 300px;
+      margin-right: 2rem;
+    }
+    .hero-content h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #172d5c;
+    }
+    .hero-content p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      color: #333;
+      max-width: 500px;
+      line-height: 1.5;
+    }
+    .hero-image {
+      flex: 1 1 800px;
+      min-width: 800px;
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+    .hero-image img {
+      width: 750px;
+      height: auto;
+      position: absolute;
+      top: -348px;
+      right: -130px;
+      z-index: 2;  
+    }
+
+    .dark-banner {
+      background: #172d5c;
+      color: #fff;
+      padding: 2rem 0;
+      text-align: center;
+    }
+    .dark-banner p {
+      font-size: 1.2rem;
+    }
+
+
+    .benefits {
+      background: #ffffff;
+      padding: 3rem 1rem;
+      text-align: center;
+    }
+    .benefits .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .benefits h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: #172d5c;
+    }
+    .benefits-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      width: 100%;
+    }
+    .benefit-card {
+      background: #f9f9f9;
+      flex: 1 1 250px;
+      max-width: 300px;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .benefit-card img {
+      width: 80px; 
+      margin-bottom: 1rem;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .benefit-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: #172d5c;
+    }
+    .benefit-card p {
+      font-size: 0.95rem;
+      color: #555;
+      line-height: 1.4;
+    }
+
+
+    .light-blue-section {
+      background: #e6f0ff;
+      padding: 6rem 1rem 6rem;
+      position: relative;
+    }
+    .explore-header {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      padding: 2rem 0;
+      position: relative;
+    }
+    .explore-image {
+      flex: 1 1 400px;
+      min-width: 300px;
+      text-align: center;
+      position: relative;
+    }
+    .explore-image img {
+      position: absolute;
+      left: 0;
+      bottom: -250px; 
+      z-index: 2;
+      width: 46.5vw; 
+    }
+    .explore-text {
+      flex: 1 1 500px;
+      min-width: 300px;
+    }
+    .explore-text h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #172d5c;
+    }
+    .explore-text p {
+      font-size: 1.1rem;
+      color: #333;
+      line-height: 1.5;
+      max-width: 500px;
+    }
+
+    .dark-services {
+      background: #172d5c;
+      padding: 5rem 1rem 3rem;
+      color: #fff;
+      text-align: center;
+    }
+    .dark-services .service-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+    .dark-services .service-card {
+      background: #ffffff;
+      color: #172d5c;
+      flex: 1 1 250px;
+      max-width: 300px;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+    }
+    .dark-services .service-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    .service-icon {
+      height: 90px;
+      margin: 0 auto 1rem auto;
+      display: block;
+    }
+    .dark-services .service-card p {
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+    .service-separator {
+      border: 0;
+      height: 1px;
+      background: #ccc;
+      margin: 1rem 0;
+    }
+
+    .dark-services .service-card .btn {
+      margin-top: auto;
+    }
+    .contact {
+      padding: 0rem 1rem;
+    }
+    .contact .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .contact-text {
+      flex: 1 1 500px;
+      min-width: 300px;
+    }
+    .contact-text h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #172d5c;
+    }
+    .contact-text p {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 1.5rem;
+    }
+    .contact-text .btn {
+      display: inline-block;
+      background: #172d5c;
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    .contact-text .btn:hover {
+      background-color: #fff;
+      color: #172d5c;
+      transform: scale(1.05);
+    }
+    .contact-image {
+      flex: 1 1 400px;
+      min-width: 300px;
+      text-align: center;
+    }
+    .contact-image img {
+      max-width: 100%;
+      height: auto;
+    }
+    .btn {
+      display: inline-block;
+      background: #172d5c;
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    .btn:hover {
+      background-color: #fff;
+      color: #172d5c;
+      transform: scale(1.05);
+    }
+    footer {
+      background: rgb(47,60,108);
+      background: linear-gradient(16deg, rgba(47,60,108,1) 0%, rgba(234,99,42,1) 77%);
+      color: #fff;
+      text-align: center;
+    }
+    footer p {
+      font-size: 0.9rem;
+      padding: 2rem;
+    }
+    footer a {
+      color: #fff;
+      text-decoration: underline;
+      font-weight: 600;
+    }
+
+    .custom-shape-divider-top-1744138734 {
+      position: relative;
+      top: 0;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+    }
+    .custom-shape-divider-top-1744138734 svg {
+      position: relative;
+      display: block;
+      width: calc(100% + 1.3px);
+      height: 73px;
+    }
+    .custom-shape-divider-top-1744138734 .shape-fill {
+      fill: #FFFFFF;
+    }
+
+    /* Login section styling */
+    .login-section {
+      padding: 0rem;
+      text-align: center;
+    }
+    .login-section p {
+      color: white;
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    .login-section form {
+      max-width: 150px;
+      margin: auto;
+    }
+    .login-section input {
+      width: 100%;
+      padding: 0.4rem;
+      margin-bottom: 0.3rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    .login-section button {
+      width: 100%;
+      padding: 0.4rem;
+      background: #ea632a;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+    .login-section button:hover {
+      background: #d45521;
+    }
+    .error-message {
+      background: #f8d7da;
+      color: #721c24;
+      padding: 0.5rem;
+      border-radius: 4px;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero-content, .hero-image {
+        margin-right: 0;
+        margin-bottom: 2rem;
+      }
+      .explore-header, .contact .container {
+        flex-direction: column;
+      }
+      .nav-right ul {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER / NAV -->
+  <header>
+    <div class="container">
+      <nav>
+        <div class="nav-left">
+          <img src="images/logodark.svg" style="width: 20vh;" alt="Logo">
+        </div>
+        <div class="nav-right">
+          <ul>
+            <li onclick="location.href='index.php'">Home</li>
+            <li onclick="location.href='services.html'">Services</li>
+            <li onclick="location.href='about.html'">About</li>
+            <li onclick="location.href='contact.html'">Contact</li>
+            <li>
+              <section class="login-section">
+                <p>Customer Login</p>
+                <?php if (isset($_GET['error']) && $_GET['error'] == 'invalid'): ?>
+                <div class="error-message">Invalid username or password</div>
+                <?php endif; ?>
+                <form method="POST" action="login.php">
+                  <div>
+                    <input type="text" name="username" placeholder="Username" required>
+                  </div>
+                  <div>
+                    <input type="password" name="password" placeholder="Password" required>
+                  </div>
+                  <button type="submit">Login</button>
+                </form>
+              </section>
+            </li>
+          </ul>
+        </div>
+        
+      </nav>
+    </div>
+    
+  </header>
+  
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Connecting You To What<br>Matters.</h1>
+        <p>
+          Experience reliable, high-speed solutions for your business and home.
+          Stay connected with the latest in telecom technology.
+        </p>
+      </div>
+      <div class="hero-image">
+        <!-- Placeholder hero image -->
+        <img src="images/hero.svg" alt="Hero Image">
+      </div>
+    </div>
+  </section>
+
+  <!-- DARK BANNER SECTION -->
+  <section class="dark-banner">
+    <div class="container">
+      <p>Rutland County's best trusted partner in cutting-edge communication solutions.</p>
+    </div>
+  </section>
+
+  <!-- BENEFITS SECTION -->
+  <section class="benefits">
+    <div class="container">
+      <h2>The JIM Benefits</h2>
+      <div class="benefits-cards">
+        <div class="benefit-card">
+          <img src="images/reliability.svg" alt="Reliability Icon">
+          <h3>Reliability</h3>
+          <p>Consistent and dependable service that you can trust.</p>
+        </div>
+        <div class="benefit-card">
+          <img src="images/inovation.svg" alt="Innovation Icon">
+          <h3>Innovation</h3>
+          <p>Cutting-edge technology that keeps you ahead of the digital landscape.</p>
+        </div>
+        <div class="benefit-card">
+          <img src="images/support.svg" alt="Support Icon">
+          <h3>Support</h3>
+          <p>Professional guidance and 24/7 assistance for your telecom needs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIGHT BLUE SECTION (Explore Our Services Header) -->
+  <section class="light-blue-section">
+    <div class="container">
+      <div class="explore-header">
+        <div class="explore-image">
+          <!-- Placeholder image for services -->
+          <img src="images/services.svg" alt="Services Placeholder">
+        </div>
+        <div class="explore-text">
+          <h2>Explore Our Services</h2>
+          <p>
+            Comprehensive solutions designed to meet the diverse communication
+            needs of businesses and individuals.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DARK SERVICES SECTION -->
+  <section class="dark-services">
+    <div class="container">
+      <div class="service-cards">
+        <!-- Internet Services Card -->
+        <div class="service-card">
+          <h3>Internet Services</h3>
+          <!-- Service icon below the heading -->
+          <img class="service-icon" src="images/internet.svg" alt="Internet Icon">
+          <p>High-speed broadband and reliable fiber-optic networks.</p>
+          <hr class="service-separator">
+          <p>Stay reliably connected with high-speed internet tailored to your business. We handle everything from network setup to Wi-Fi optimization, ensuring strong performance, security, and uptime for smooth day-to-day operations and collaboration.</p>
+          <a href="services.html" class="btn">Learn more</a>
+        </div>
+        <!-- Cloud Solutions Card -->
+        <div class="service-card">
+          <h3>Cloud Solutions</h3>
+          <!-- Service icon below the heading -->
+          <img class="service-icon" src="images/cloud.svg" alt="Cloud Icon">
+          <p>Secure and scalable cloud-based solutions to power your business.</p>
+          <hr class="service-separator">
+          <p>Upgrade to scalable cloud solutions with secure data storage, backups, and remote access. Our services reduce IT overhead and keep your team connected and productive—anytime, anywhere.</p>
+          <a href="services.html" class="btn">Learn more</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT US SECTION -->
+  <section class="contact">
+    <div class="container">
+      <div class="contact-text">
+        <h2>Contact Us</h2>
+        <p>
+          We are here to help. Reach out to us with any questions, inquiries,
+          or service requests.
+        </p>
+        <a href="contact.html" class="btn">Get in Touch</a>
+      </div>
+      <div class="contact-image">
+        <!-- Placeholder contact image -->
+        <img src="images/contactus.svg" alt="Contact Us">
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="custom-shape-divider-top-1744138734">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+      </svg>
+    </div>
+    <div class="container">
+      <p>
+        © 2025 JIM Telecommunications. All Rights Reserved.
+        | <a href="#">Privacy Policy</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

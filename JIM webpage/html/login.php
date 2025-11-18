@@ -25,10 +25,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit();
     } else {
         // Redirect back with error
-        header('Location: index.html?error=invalid');
+        header('Location: index.php?error=invalid');
         exit();
     }
     
     $conn->close();
 }
 ?>
+

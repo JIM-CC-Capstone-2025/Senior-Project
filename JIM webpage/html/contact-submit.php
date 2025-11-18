@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <h1>Oops!</h1>
             <p>There was an error submitting your message. Please try again or call us directly.</p>
         <?php endif; ?>
-        <a href="index.html" class="btn">Return to Homepage</a>
+        <a href="index.php" class="btn">Return to Homepage</a>
     </div>
 </body>
 </html>

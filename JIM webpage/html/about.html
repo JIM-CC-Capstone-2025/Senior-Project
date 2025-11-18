@@ -27,10 +27,40 @@
     .team-member img { width: 200px; height: 200px; border-radius: 50%; background: #e6f0ff; margin: 0 auto 1rem; }
     .team-member h3 { color: #172d5c; margin-bottom: 0.5rem; }
     .team-member p { color: #666; }
-    footer { background: linear-gradient(16deg, rgba(47,60,108,1) 0%, rgba(234,99,42,1) 77%); color: white; text-align: center; padding: 2rem; }
-  </style>
-</head>
-<body>
+     footer {
+      background: rgb(47,60,108);
+      background: linear-gradient(16deg, rgba(47,60,108,1) 0%, rgba(234,99,42,1) 77%);
+      color: #fff;
+      text-align: center;
+    }
+    footer p {
+      font-size: 0.9rem;
+      padding: 2rem;
+    }
+    footer a {
+      color: #fff;
+      text-decoration: underline;
+      font-weight: 600;
+    }
+
+    .custom-shape-divider-top-1744138734 {
+      position: relative;
+      top: 0;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+    }
+    .custom-shape-divider-top-1744138734 svg {
+      position: relative;
+      display: block;
+      width: calc(100% + 1.3px);
+      height: 73px;
+    }
+    .custom-shape-divider-top-1744138734 .shape-fill {
+      fill: #FFFFFF;
+    }
+	</style>
   <header>
     <nav>
       <div class="nav-left">
@@ -38,7 +68,7 @@
       </div>
       <div class="nav-right">
         <ul>
-          <li onclick="location.href='index.html'">Home</li>
+          <li onclick="location.href='index.php'">Home</li>
           <li onclick="location.href='services.html'">Services</li>
           <li onclick="location.href='about.html'">About</li>
           <li onclick="location.href='contact.html'">Contact</li>
@@ -90,22 +120,22 @@
       <h2>Our Team</h2>
       <div class="team">
         <div class="team-member">
-          <img src="images/team-ceo.jpg" alt="CEO">
+          <img src="images/JohnAnderson.png" alt="CEO">
           <h3>John Anderson</h3>
           <p>Chief Executive Officer</p>
         </div>
         <div class="team-member">
-          <img src="images/team-cto.jpg" alt="CTO">
+          <img src="images/SarahMitchell.png" alt="CTO">
           <h3>Sarah Mitchell</h3>
           <p>Chief Technology Officer</p>
         </div>
         <div class="team-member">
-          <img src="images/team-ops.jpg" alt="Operations">
+          <img src="images/MichaelChen.png" alt="Operations">
           <h3>Michael Chen</h3>
           <p>VP of Operations</p>
         </div>
         <div class="team-member">
-          <img src="images/team-support.jpg" alt="Support">
+          <img src="images/EmilyRodriguez.png" alt="Support">
           <h3>Emily Rodriguez</h3>
           <p>Customer Support Director</p>
         </div>
@@ -118,9 +148,19 @@
       <p>We maintain three data centers strategically located across the state, each with backup power systems, climate control, and 24/7 security monitoring. This infrastructure allows us to deliver the speed and reliability that modern businesses and homes require.</p>
     </div>
   </div>
-
+  <!-- FOOTER -->
   <footer>
-    <p>© 2025 JIM Telecommunications. All Rights Reserved. | <a href="#">Privacy Policy</a></p>
+    <div class="custom-shape-divider-top-1744138734">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+      </svg>
+    </div>
+    <div class="container">
+      <p>
+        © 2025 JIM Telecommunications. All Rights Reserved.
+        | <a href="#">Privacy Policy</a>
+      </p>
+    </div>
   </footer>
 </body>
 </html>
